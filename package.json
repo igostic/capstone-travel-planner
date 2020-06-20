@@ -1,0 +1,63 @@
+{
+  "name": "udacity-project-capstone",
+  "version": "1.0.0",
+  "description": "Project: Front End Developer Capstone - Travel Planner App",
+  "main": "src/server/index.js",
+  "scripts": {
+    "wp-server": "webpack-dev-server --config webpack.config/webpack.dev.js --open",
+    "ex-server": "node src/server/index.js",
+    "build": "webpack --config webpack.config/webpack.prod.js",
+    "start": "npm run build && npm run ex-server",
+    "dev": "npm-run-all -p -r wp-server ex-server",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrafSoul/udacity-project-capstone.git"
+  },
+  "keywords": [
+    "javascript",
+    "html",
+    "css",
+    "travel",
+    "planer",
+    "app"
+  ],
+  "author": "Dmitriy Zatulovskiy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GrafSoul/udacity-project-capstone/issues"
+  },
+  "homepage": "https://github.com/GrafSoul/udacity-project-capstone#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.5.3",
+    "eslint": "^7.0.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "jest": "^26.0.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.1",
+    "webpack-dev-server": "^3.11.0",
+    "workbox-webpack-plugin": "^5.1.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}

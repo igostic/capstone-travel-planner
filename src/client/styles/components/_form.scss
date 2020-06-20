@@ -1,0 +1,153 @@
+/*
+* Form block styles.
+*/
+form {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    position: relative;
+    padding: 20px 25px 20px 25px;
+    background-color: $color-bgw;
+    border-radius: 12px;
+    margin-top: -35px;
+    box-shadow: 2px 2px 6px 2px $color-bgl;
+    transition: all 0.3 ease;
+
+    .form-fields,
+    .btn-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    label {
+        font-size: 1.2em;
+        font-weight: 600;
+        white-space: nowrap;
+        display: inline-block;
+        margin: 0 0 10px 0;
+        color: $color-pd;
+    }
+
+    input {
+        min-width: 220px;
+        margin: 0 0 10px 0;
+        display: inline-block;
+        font-size: 1.1em;
+        border: 1px solid $color-pl;
+        border-radius: 8px;
+        box-shadow: inset 1px 1px 6px $color-bgl;
+
+        &.city {
+            padding: 10px 10px;
+        }
+
+        &.date {
+            padding: 8px 10px;
+            margin: 0 0 15px 0;
+        }
+    }
+
+    button {
+        width: 100%;
+        cursor: pointer;
+        display: block;
+        margin: 0 0 10px 0; 
+        
+        &.reset {
+            background-color: $color-gl;
+            margin: 0;
+        }
+        &.reset:hover {
+            background-color: $color-g ;
+        }
+    }
+
+    /* Error styles */
+    .error {
+        padding: 70px 12px 12px;
+        display: none;
+        border-radius: 8px;
+        text-align: center;
+        color: $color-w;
+        background-color: $color-e;
+        position:absolute;
+        top: 20px;
+        left: 25px;
+        right: 25px;
+        bottom: 130px;
+    }
+}
+
+@media(min-width: 710px) {
+    form {
+        .form-fields {
+            flex-direction: row;
+            margin-bottom: 15px;
+        }
+
+        .btn-group {
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        label {
+            margin: 0 10px 0 0;
+        }
+
+        input {
+            margin: 0 10px 0 0;
+
+            &.city {
+                padding: 10px 10px;
+            }
+
+            &.date {
+                padding: 8px 10px;
+                margin: 0;
+            }
+        } 
+
+        button {
+            width: 150px;
+            margin: 0;
+            
+            &.reset {
+                margin: 0 0 0 15px;
+            }
+        }
+
+        .error {
+            padding: 12px;
+            right: 25px;
+            bottom: auto;
+        }
+        
+    }
+}
+
+@media(min-width: 980px) {
+    form {
+        flex-direction: row;
+
+        .form-fields {
+            margin-bottom: 0;
+            margin-right: 15px;
+        }
+
+        button {
+            width: auto;
+        }
+
+        .error {
+            padding: 12px;
+            right: 240px;
+            bottom: auto;
+        }
+    }
+}
