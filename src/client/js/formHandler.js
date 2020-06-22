@@ -86,7 +86,7 @@ async function handleSave(event) {
 }
 
 //constants 
-const geoNameUrl = 'http://api.geonames.org/searchJSON?formatted=true&q='
+const geoNameUrl = 'http://secure.geonames.org/searchJSON?formatted=true&q='
 const geoNameUserName = '&username=igostic';
 
 const weatherUrl = 'https://api.weatherbit.io/v2.0/forecast/daily?'
