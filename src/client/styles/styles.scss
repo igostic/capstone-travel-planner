@@ -1,8 +1,40 @@
+body {
+    height: 100%;
+}
 
-@import './components/_config.scss';
-@import './components/_resets.scss';
-@import './components/_base.scss';
-@import './components/_form.scss';
-@import './components/_results.scss';
-@import './components/_header.scss';
-@import './components/_footer.scss';
+#cover {
+    background: #222 url('https://picsum.photos/200/300/?blur') center center no-repeat;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* only used for background overlay not needed for centering */
+
+form:before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 576px) {
+    .jumbotron {
+        padding: 8rem 2rem;
+    }
+}

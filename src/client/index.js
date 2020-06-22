@@ -1,8 +1,26 @@
-'use strict';
-import { App } from './js/app';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+import { checkForInput } from './js/inputChecker'
+import { handleSubmit } from './js/formHandler'
+import { handleSave } from './js/formHandler'
 
-App();
 
-import './styles/styles.scss';
+import './styles/styles.scss'
 
-export { App };
+const $ = require("jquery");
+
+export {
+    handleSubmit,
+    handleSave,
+    checkForInput
+}
+
+console.log(checkForInput);
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const searchBtn = document.getElementById('search');
+    searchBtn.addEventListener('click', handleSubmit);
+
+
+})

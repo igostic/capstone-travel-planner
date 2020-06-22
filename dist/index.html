@@ -1,7 +1,63 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Travel Planner</title><link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/apple-touch-icon-57x57.png"/><link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114x114.png"/><link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72x72.png"/><link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144x144.png"/><link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/apple-touch-icon-120x120.png"/><link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/apple-touch-icon-152x152.png"/><link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32"/><link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16"/><meta name="application-name" content="Travel Planer"/><meta name="msapplication-TileColor" content="#FFFFFF"/><meta name="msapplication-TileImage" content="images/mstile-144x144.png"/><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet"><link rel="icon" href="favicon.ico"><link href="main.css" rel="stylesheet"></head><body><header><h1 class="logo"><strong>[TP]</strong> Travel Planner</h1></header><main><div class="content"><section><form onsubmit="return false;"><p class="error"></p><div class="form-fields"><label for="city">My Trip to:</label> <input id="city" name="city" class="city" autofocus placeholder="Enter city"> <label for="date">Departing:</label> <input id="date" type="date" name="date" class="date"></div><div class="btn-group"><button id="get" type="submit" name="get" class="btn get">Get Trip</button> <button id="reset" type="reset" name="reset" class="btn reset">Reset</button></div></form></section><section><div id="list-trip"></div></section></div></main><footer><p class="copyright">© Travel Planner | 2020 | Created by Dmitriy Zatulovskiy | Used Web API - <a href="https://www.geonames.org/" target="_blank">Geonames</a> , <a href="https://www.weatherbit.io/api" target="_blank">WeatherBit</a> , <a href="https://pixabay.com/" target="_blank">Pixabay</a> , <a href="https://restcountries.eu/" target="_blank">REST Countries</a></p></footer><div class="modal"><div id="modal-content" class="modal-content"><div class="loader"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="loader-text">Loading in progress</div></div><div id="result-trip"></div><div class="question-delete"><p class="question">Are you sure you want to delete the entry?</p><div class="btn-group"><span class="btn btn-delete">Delete</span> <span class="btn btn-cancel">Сancel</span></div></div></div><div class="modal-curtain"></div></div><script>// Check that service workers are supported
-        if (window.location.href !== 'http://localhost:8080/' && 'serviceWorker' in navigator) {
-            // Use the window load event to keep the page load performant
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js');
-            });
-        }</script><script src="main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <title>Travel App by Prakhar Chauhan</title>
+<link href="main.css" rel="stylesheet"></head>
+
+<body>
+    <div class="jumbotron text-center bg-dark text-white" style="margin-bottom:0">
+        <h1>Travel App</h1>
+    </div>
+    <section id="cover" class="min-vh-100">
+        <div id="cover-caption">
+            <div class="container">
+                <div class="row text-white">
+                    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                        <h3 class="text-truncate">Travel Planner</h3>
+                        <div class="px-2">
+                            <form action="" class="justify-content-center">
+                                <div class="form-group">
+                                    <label for="destination" class="control-label">Destination</label>
+                                    <input type="text" class="form-control" id="destination" placeholder="Destination" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="startDate" class="control-label">Departure  Date</label>
+                                    <input type="date" class="form-control" id="startDate" placeholder="StartDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="endDate" class="control-label">Return Date</label>
+                                    <input type="date" class="form-control" id="endDate" placeholder="EndDate" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg" id="search">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="new-trip" class="new-trip">
+        
+    </section>
+    <div class=" jumbotron text-center bg-secondary text-white " style="margin-bottom:0 ">
+        <p>Made by Prakhar Chauhan</p>
+    </div>
+    <footer>
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performance
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
+    </footer>
+<script type="text/javascript" src="main.js"></script></body>
+
+</html>

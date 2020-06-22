@@ -1,100 +1,50 @@
-# Project Capstone - FEND Capstone - Travel Planner App.
+# FEND Capstone - Travel App
+
+### Table of Contents
+
+- [FEND Capstone - Travel App](#fend-capstone---travel-app)
+    - [Table of Contents](#table-of-contents)
+- [Overview](#overview)
+- [Description](#description)
+- [To view project](#to-view-project)
+- [How to run](#how-to-run)
+- [Other requirements implemented](#other-requirements-implemented)
+
+# Overview
+This is a project Front End Udacity Capstone Project that incorporates all of the Front End skills learned. Utilize multiple APIs to present a user with all they need to know about their trip.
+
+# Description
+
+This is a Front End Udacity Project that has the following requirement:
+his project requires us to build out a travel app that, at a minimum, obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs.
 
 
-### Project Description
-Travel Planner - applications for travel planning. Using the app, 
-you can specify the city for a trip in the future to find out 
-the weather and information about the country where the city is located.
+# To view project
+The project is published on GitHub Pages. To view, click on this link: [link to project](https://github.com/igostic/capstone-travel-planner)
 
-### Additional function
-* Country information (name, capital, region, population, languages, currency...).
-* Added weather icons.
-* Implemented the status of entries (active, done).
+# How to run 
+To launch this website, simply clone the repo 
+ - cd into your new folder 
+ - To install dependency:
+   - npm install
+ - To build the project in production mode
+   - npm run build-prod
+ - To start the server
+   - npm run start
+ - To run the client, open 'localhost:3040', this will open html.index
+   - enter a destination
+   - enter a start date
+   - enter an end date
+   - click search
+   - This will display the trip info
+ - To test the project
+   - npm run test  
+ - To build the project in developement mode
+   - npm run build-dev
+   - This will automatically open localshost:8080
 
+# Other requirements implemented
 
-
-
-### Clone, Install, Development & Start
-```
-// Clone the repository.
-git clone https://github.com/igostic/capstone-travel-planner.git
-
-// Go to the project folder.
-cd udacity-project-capstone
-
-// Code for .env file.
-API_GEO_LOGIN=************************************
-API_WEATHER_KEY=**********************************
-API_PIXABAY_KEY=**********************************
-NODE_ENV=development
-```
-
-And run the following commands in console.
-```
-// Installing npm modules.
-npm install
-
-// Starting local Webpack Server for development.
-npm run dev 
-
-// Creating a set of files for production in the /dist folder.
-npm run build 
-
-// Starting local Server and App.
-npm run start 
-
-// Testing App.
-npm run test
-```
-
-### Project structure
-```
-├── /__tests__/                                         // The folder with the files for testing.
-│       ├── getapi.spec.js                              // Instructions for testing the getAPIData() function.
-│       └── helpers.spec.js                             // Instructions for testing helpers functions.
-│ 
-├── /src/                                               // Application file folder.
-│       ├── /client/                                    // Folder with the client part of the application.
-│       │       ├── /images/                            // Folder for favicon images.
-│       │       │     ...                               // Favicon icon set.
-│       │       │
-│       │       ├── /media/                             // Folder for weather icons.
-│       │       │     ...                               // Set of weather icons.
-│       │       │
-│       │       ├── /js/                                // Folder for JS files.
-│       │       │     ├── app.js                        // Main functions for creating new entries.
-│       │       │     ├── helpers.js                    // Helper functions.
-│       │       │     ├── getapi.js                     // Function for getting API data.
-│       │       │     ├── setdata.js                    // Function for sending data to the server.
-│       │       │     └── template.js                   // Template for a new entry
-│       │       │
-│       │       ├── /styles/                            // Folder with styles.
-│       │       │     ├── /componets/                   // Folder with parts of styles.
-│       │       │     │       ├── _base.scss            // Basic styles.
-│       │       │     │       ├── _config.scss          // Config variables.
-│       │       │     │       ├── _footer.scss          // Footer block styles.
-│       │       │     │       ├── _form.scss            // Form block styles.
-│       │       │     │       ├── _header.scss          // Header block styles.
-│       │       │     │       ├── _results.scss         // Results block styles.
-│       │       │     │       └── _resets.scss          // Resets styles.
-│       │       │     └── styles.scss                   // The main file of styles.
-│       │       │
-│       │       ├── /views/                             // Folder for HTML files.
-│       │       │     └── index.html                    // HTML file of the app.
-│       │       │
-│       │       └── index.js                            // Main JS file of the app.
-│       │
-│       └── /server/                                    // Folder of the server part of the application
-│               └── index.js                            // Express server file.
-│
-├── /webpack.config/                                    // Folder with Webpack configuration files.
-│       ├── webpack.dev.js                              // Webpack configuration file for development. 
-│       └── webpack.prod.js                             // Webpack configuration file for production.  
-│
-├── .babelrc                                            // Сonfiguration file for Babel.
-├── .eslintrc.js                                        // Сonfiguration file for Eslint.
-├── .gitignore                                          // File to exclude files and folders.
-├── LICENSE.txt                                         // File with the license text
-├── package-lock.json                                   // Npm configuration file.
-└── package.json                                        // Npm configuration file.
-```
+- Add end date and display length of trip.
+- Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities)
+- Incorporate icons into forecast
