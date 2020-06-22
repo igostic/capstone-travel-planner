@@ -48,3 +48,5 @@ To launch this website, simply clone the repo
 - Add end date and display length of trip.
 - Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities)
 - Incorporate icons into forecast
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3ce2d251-6960-4a7e-bc6f-4d14cdf938b7/deploy-status)](https://app.netlify.com/sites/travel-planner-application/deploys)
