@@ -1,92 +1,10 @@
 import { createModalUi } from './ui';
-const $ = require("jquery");
-
-let data = {};
-
-async function handleSubmit(event) {
-    event.preventDefault()
-
-    // check what text was put into the form field
-    let city = document.getElementById('destination').value
-    let start = document.getElementById('startDate').value
-    let end = document.getElementById('endDate').value
-
-
-    let res = await Client.checkForInput(city, start, end);
-
-    if (!res) {
-        console.log("::: Form Submitted :::")
-
-
-        data.startDate = start;
-        data.endDate = end;
-        console.log("::: data-1 :::");
-        console.log(data);
-
-        let diff = await daysDiff(start, end)
-        console.log(diff)
-        data.duration = diff;
-
-
-
-        let cityInfo = await getCityData(city);
-
-        console.log("::cityInfo:::")
-        console.log(cityInfo);
-        console.log(data);
-
-        data.cityInfo = cityInfo;
-
-        let weatherInfo = await getWeatherForeCast(cityInfo.Lat, cityInfo.Lng);
-
-        console.log("::weatherInfo:::")
-        console.log(weatherInfo);
-
-        let weather = await processWeather(weatherInfo.data, start)
-        console.log("::weather::", weather)
-
-        data.weather = weather;
-
-        let cityImage = await getCityImage(data.cityInfo);
-
-        if (cityImage == undefined) {
-            cityImage = await getCountryImage(data.cityInfo);
-        }
-        console.log("::cityImage:::")
-        console.log(cityImage);
-
-
-        data.imageUrl = cityImage;
-        //get the DOM
-        const newTripBlock = document.getElementById('new-trip');
-        newTripBlock.innerHTML = '';
-
-        //display the newTripBlock in the browser
-
-        console.log("::data-2:::")
-        console.log(data)
-
-        let newModal = await createModalUi(data);
-
-        console.log("::after createModalUi:::")
-        console.log(newModal.innerHTML);
-        newTripBlock.innerHTML = newModal.innerHTML;
-
-        $('#tripModal').modal('show');
-
-    }
-
-}
-
-
-async function handleSave(event) {
-    event.preventDefault()
-    await postData('/save', { data });
-    $('#tripModal').modal('toggle');
-}
+import {postData} from './postData';
+import { daysDiff } from './daysDiff';
+const $ = require("jquery");    
 
 //constants 
-const geoNameUrl = 'https://secure.geonames.org/searchJSON?formatted=true&q='
+const geoNameUrl = 'http://secure.geonames.org/searchJSON?formatted=true&q='
 const geoNameUserName = '&username=igostic';
 
 const weatherUrl = 'https://api.weatherbit.io/v2.0/forecast/daily?'
@@ -95,8 +13,9 @@ const weatherKey = '&key=6e265d0c931c41839e11b02b593abacc';
 const pixbayUrl = 'https://pixabay.com/api/?'
 const pixabayKey = '&key=17138468-2428f9bf0e6a755835812ac1c';
 
+let data = {};
 
-async function getCityData(city) {
+export async function getCityData(city) {
     const res = await fetch(geoNameUrl + city + geoNameUserName + '&style=full')
     let cityData = {};
     try {
@@ -167,43 +86,81 @@ async function processWeather(forecaseInfo, startDate) {
 
 
 }
+export async function handleSubmit(event) {
+    event.preventDefault()
+
+    // check what text was put into the form field
+    let city = document.getElementById('destination').value
+    let start = document.getElementById('startDate').value
+    let end = document.getElementById('endDate').value
 
 
-export async function daysDiff(start, end) {
+    let res = await Client.checkForInput(city, start, end);
 
-    console.log("::daysDiff:::")
-    let d1 = new Date(start);
-    let d2 = new Date(end);
+    if (!res) {
+        console.log("::: Form Submitted :::")
 
 
-    const diffTime = Math.abs(d2 - d1);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    console.log('diffDays', diffDays);
-    return diffDays;
+        data.startDate = start;
+        data.endDate = end;
+        console.log("::: data-1 :::");
+        console.log(data);
+
+        let diff = await daysDiff(start, end)
+        console.log(diff)
+        data.duration = diff;
+
+
+
+        let cityInfo = await getCityData(city);
+
+        console.log("::cityInfo:::")
+        console.log(cityInfo);
+        console.log(data);
+
+        data.cityInfo = cityInfo;
+
+        let weatherInfo = await getWeatherForeCast(cityInfo.Lat, cityInfo.Lng);
+
+        console.log("::weatherInfo:::")
+        console.log(weatherInfo);
+
+        let weather = await processWeather(weatherInfo.data, start)
+        console.log("::weather::", weather)
+
+        data.weather = weather;
+
+        let cityImage = await getCityImage(data.cityInfo);
+
+        if (cityImage == undefined) {
+            cityImage = await getCountryImage(data.cityInfo);
+        }
+        console.log("::cityImage:::")
+        console.log(cityImage);
+
+
+        data.imageUrl = cityImage;
+        //get the DOM
+        const newTripBlock = document.getElementById('new-trip');
+        newTripBlock.innerHTML = '';
+
+        //display the newTripBlock in the browser
+
+        console.log("::data-2:::")
+        console.log(data)
+
+        let newModal = await createModalUi(data);
+
+        console.log("::after createModalUi:::")
+        console.log(newModal.innerHTML);
+        newTripBlock.innerHTML = newModal.innerHTML;
+
+        $('#tripModal').modal('show');
+
+    }}
+
+export async function handleSave(event) {
+    event.preventDefault()
+    await postData('/save', { data });
+    $('#tripModal').modal('toggle');
 }
-
-async function postData(url = '', data = {}) {
-    // console.log(data)
-    const response = await fetch(url, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header        
-    });
-
-    try {
-        const newData = await response.json();
-        console.log(newData);
-        return newData
-    } catch (error) {
-        console.log("error", error);
-        // appropriately handle the error
-    }
-}
-
-
-
-
-export { handleSubmit, handleSave, getCityData }
