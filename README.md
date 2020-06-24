@@ -20,7 +20,7 @@ his project requires us to build out a travel app that, at a minimum, obtains a 
 
 
 # To view project
-The project is published on GitHub Pages. To view, click on this link: [link to project](https://github.com/igostic/capstone-travel-planner)
+The project is published on GitHub Pages. To view, click on this link: [link to project]https://travel-planner-application.netlify.app/)
 
 # How to run 
 To launch this website, simply clone the repo 
